@@ -14,9 +14,9 @@ cargo build
 cargo run
 🛰  Mounting /consumos:
     => GET /consumos (get_consumos)
-    => GET /consumos/<title> (get_consumo)
+    => GET /consumos/<idkey> (get_consumo)
     => POST /consumos (create_consumo)
-    => DELETE /consumos/<title> (delete_consumo)
+    => DELETE /consumos/<idkey> (delete_consumo)
 🚀 Rocket has launched from http://0.0.0.0:8000
 ```
 
@@ -32,15 +32,24 @@ rustup update && cargo update
 # cargo run
 ```zsh
 curl -X GET http://localhost:8000/consumos 
-curl -X GET http://localhost:8000/consumos/<id>
+curl -X GET http://localhost:8000/consumos/<idkey>
 
-curl -X DELETE http://localhost:8000/consumos/<id>
+curl -X DELETE http://localhost:8000/consumos/<idkey>
 
 
 curl -X POST http://192.168.0.46:8000/consumos
 {
-  "title": "Neviim Jads",
-  "genre": "Dev"
+  "idkey": "243a3c43be545ad3f89fa3c1987d",
+  "host": "dev",
+  "relogio": 2000,
+  "consumo": 100,
+  "lavouroupa": false,
+  "quantidade": 0,
+  "observacao": "registro inicial",
+  "diffdias": 1,
+  "difftime": 96545,
+  "data_cadastro": "17/08/2020",
+  "data_alteracao": "17/08/2020"
 }
 ```
 

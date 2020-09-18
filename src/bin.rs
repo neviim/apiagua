@@ -17,9 +17,9 @@ fn get_consumos() -> Json<Option<Vec<Consumo>>> {
     Json(db::read_consumos())
 }
 
-#[get("/<title>")]
-fn get_consumo(title: &RawStr) -> Json<Option<Consumo>> {
-    Json(db::read_consumo(title.url_decode().expect("Failed to decode title.")))
+#[get("/<idkey>")]
+fn get_consumo(idkey: &RawStr) -> Json<Option<Consumo>> {
+    Json(db::read_consumo(idkey.url_decode().expect("Failed to decode idkey.")))
 }
 
 #[post("/", data="<consumo>")]
@@ -27,9 +27,9 @@ fn create_consumo(consumo: Json<Consumo>) -> Json<Option<Consumo>> {
     Json(db::insert_consumo(consumo.0))
 }
 
-#[delete("/<title>")]
-fn delete_consumo(title: &RawStr) -> Json<bool> {
-    Json(db::delete_consumo(title.url_decode().expect("Failed to decode title.")))
+#[delete("/<idkey>")]
+fn delete_consumo(idkey: &RawStr) -> Json<bool> {
+    Json(db::delete_consumo(idkey.url_decode().expect("Failed to decode idkey.")))
 }
 
 fn rocket() -> rocket::Rocket {

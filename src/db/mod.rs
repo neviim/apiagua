@@ -21,10 +21,10 @@ pub fn read_consumos() -> Option<Vec<Consumo>> {
     }
 }
 
-pub fn read_consumo(title: String) -> Option<Consumo> {
+pub fn read_consumo(idkey: String) -> Option<Consumo> {
     match _consumos() {
         Ok(consumos) => {
-            let index = consumos.iter().position(|m| m.title == title);
+            let index = consumos.iter().position(|m| m.idkey == idkey);
 
             match index {
                 Some(x) => Some(consumos[x].clone()),
@@ -46,10 +46,10 @@ pub fn insert_consumo(consumo: Consumo) -> Option<Consumo> {
     }
 }
 
-pub fn delete_consumo(title: String) -> bool {
+pub fn delete_consumo(idkey: String) -> bool {
     match _consumos() {
         Ok(mut consumos) => {
-            let index = consumos.iter().position(|m| m.title == title);
+            let index = consumos.iter().position(|m| m.idkey == idkey);
 
             match index {
                 Some(x) => {
